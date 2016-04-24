@@ -1,14 +1,21 @@
-process.env.NODE_CONFIG_DIR = './config/env';
 
-var mean = require('meanio');
-var cluster = require('cluster');
-var deferred = require('q').defer();
-var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
 var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
+var mongo = require('mongodb');
+
+var mongoUri = process.env.MONGOLAB_URI || 
+  process.env.MONGOHQ_URL || 
+  'mongodb://oaklen:10275512599@ds019101.mlab.com:19101/heroku_ppxqqb38'; 
+
+mongo.Db.connect(mongoUri, function (err, db) {
+  db.collection('mydocs', function(er, collection) {
+    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+    });
+  });
+});
 
 //where to look for static files
 app.use(express.static(__dirname +'/public'));
