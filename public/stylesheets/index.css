@@ -2,13 +2,13 @@
 @import url('http://fonts.googleapis.com/css?family=Average');
 
 body {
-    background-color: #E4F0EC;
-    color: #296379;
+    background-color: white;
+    color: #3a5660;
 }
 
 h1 {
-    background-color: #296379;
-    color: #E4F0EC;
+    background-color: #3a5660;
+    color: white;
     font-family: "Fjalla One";
     font-size: 50px;
     text-align: center;
@@ -18,8 +18,8 @@ h1 {
 
 table {
     font-family: "Average";
-    background-color: #E4F0EC;
-    color: #296379;
+    background-color: white;
+    color: #3a5660;
 }
 
 th {
@@ -34,15 +34,15 @@ td {
 
 input {
     height: 40px;
-    background-color: #E4F0EC;
-    color: #296379;
-    border: 1px solid #296379;
+    background-color: white;
+    color: #3a5660;
+    border: 1px solid #3a5660;
 }
 
 .button {
-    background-color: #E4F0EC;
-    border: 1px solid #296379;
-    color: #296379;
+    background-color: white;
+    border: 1px solid #3a5660;
+    color: #3a5660;
     padding: 10px 30px;
     width: 120px;
     text-align: center;
@@ -53,17 +53,17 @@ input {
 }
 
 .button:hover {
-    background-color: #296379;
-    border: 1px solid #296379;
-    color: #E4F0EC;
+    background-color: #3a5660;
+    border: 1px solid #3a5660;
+    color: white;
 }
 
 .button-top {
     display: inline-block;
-    background-color: #E4F0EC; 
-    color: #296379; 
+    background-color: white; 
+    color: #3a5660; 
     width: 120px;
-    border: 1px solid #296379;
+    border: 1px solid #3a5660;
     padding: 10px 45px;
     font-size: 14px;
     text-align: center;
@@ -71,9 +71,9 @@ input {
 }
 
 .button-top:hover {
-    background-color: #296379;
-    border: 1px solid #296379;
-    color: #E4F0EC;
+    background-color: #3a5660;
+    border: 1px solid #3a5660;
+    color: white;
 }
 
 
