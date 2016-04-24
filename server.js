@@ -1,15 +1,16 @@
 
-var util = require('util');
 var express = require('express');
-var app = express();
 var mongojs = require('mongojs');
+var favicon = require('serve-favicon');
 // var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
-var mongodb = require('mongodb');
+// var mongodb = require('mongodb');
 var http = require('http'); 
 var url = require('url');
-var client = require('mongodb').MongoClient;
+// var client = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 
+var app = express();
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
 
@@ -22,15 +23,19 @@ console.log('db server: ' + dbConnUrl)
 app.use(express.static(__dirname +'/public'));
 //parse json data
 app.use(bodyParser.json());
+app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
 
-client.connect(dbConnUrl, {}, function(err, db){
+routes = require('./routes/index');
+app.use('/', routes);
 
-    console.log('error: ' + err)
+// client.connect(dbConnUrl, {}, function(err, db){
 
-    db.listCollections().toArray(function(err, collections) {
+//     console.log('error: ' + err)
+
+mongoose.connect(process.env.DATABASE_URL||'mongodb://localhost:27017/test', function(err) {
         conosole.log('error: ' + error)
         conosole.log('collections: ' + collections)
-    })
+});
     //get
     app.get('/bookList', function(req, res) {
         console.log("SEREVR: get request received")
@@ -90,6 +95,6 @@ client.connect(dbConnUrl, {}, function(err, db){
         }
       );
     });
-});
+// });
 app.listen(3000);
 console.log("SERVER RUNNING ON PORT 3000");
