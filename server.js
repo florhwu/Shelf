@@ -5,10 +5,11 @@ var mongojs = require('mongojs');
 var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
+var http - requrie('http');
 
 var mongoUri = process.env.MONGOLAB_URI || 
   process.env.MONGOHQ_URL || 
-  'mongodb://oaklen:10275512599@ds019101.mlab.com:19101/heroku_ppxqqb38'; 
+  'mongodb://heroku_ppxqqb38:67ldeomkuuc9jdlgs89jimikvn@ds019101.mlab.com:19101/heroku_ppxqqb38'; 
 
 mongo.Db.connect(mongoUri, function (err, db) {
   db.collection('mydocs', function(er, collection) {
@@ -17,14 +18,14 @@ mongo.Db.connect(mongoUri, function (err, db) {
   });
 });
 
+// http.createServer(function(request, response) {
+//     response.writeHead(200, {'Content-Type': 'text/plain'})
+// }).listen(process.env.PORT)
+
 //where to look for static files
 app.use(express.static(__dirname +'/public'));
 //parse json data
 app.use(bodyParser.json());
-
-app.get('/cool', function(request, response) {
-  response.send(cool());
-});
 
 //get
 app.get('/bookList', function(req, res) {
@@ -86,5 +87,5 @@ app.put('/bookList/:id', function (req, res) {
   );
 });
 
-app.listen(3000);
+app.listen(process.env.PORT);
 console.log("SERVER RUNNING ON PORT 3000");
