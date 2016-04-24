@@ -2,32 +2,35 @@
   "name": "shelves",
   "version": "1.0.0",
   "description": "A webapp to display and edit my list of TO-READ books",
+  "engines": {
+    "node": "4.4.2"
+  },
   "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "cool-ascii-faces": "1.3.4",
     "express": "^4.13.4",
     "mongodb": "^2.1.16",
     "mongojs": "^2.3.0",
-    "meanio": "^0.9.0",
-    "angular-bootstrap": "^0.12.2",
   },
   "devDependencies": {
-  }
-    },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oaklen/Shelve.git"
   },
-  "author": "",
+  "author": "oaklen",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/oaklen/Shelve/issues"
   },
-  "homepage": "https://github.com/oaklen/Shelve#readme",
-  "keywords": []
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ]
 }
