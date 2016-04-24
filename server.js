@@ -23,17 +23,21 @@ console.log('db server: ' + dbConnUrl)
 app.use(express.static(__dirname +'/public'));
 //parse json data
 app.use(bodyParser.json());
-// app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
-
-// routes = require('./routes/index');
-// app.use('/', routes);
 
 // client.connect(dbConnUrl, {}, function(err, db){
 
 //     console.log('error: ' + err)
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
 
-mongoose.connect(process.env.DATABASE_URL||'mongodb://127.0.0.1:3000/bookList', function(err) {
-        console.log('error: ' + err)
+// Connection URL
+var url = 'mongodb://localhost:27017/myproject';
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server");
+
+  db.close();
 });
     //get
     app.get('/bookList', function(req, res) {
