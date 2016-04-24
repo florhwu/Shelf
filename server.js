@@ -33,8 +33,8 @@ app.use(bodyParser.json());
 //     console.log('error: ' + err)
 
 mongoose.connect(process.env.DATABASE_URL||'mongodb://localhost:27017/test', function(err) {
-        conosole.log('error: ' + error)
-        conosole.log('collections: ' + collections)
+        console.log('error: ' + error)
+        console.log('collections: ' + collections)
 });
     //get
     app.get('/bookList', function(req, res) {
