@@ -1,30 +1,38 @@
 
+var util = require('util');
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
-var db = mongojs('bookList',['bookList']);
+// var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
-var http = require ('http');         // For serving a basic web page.
-
+var http = require('http'); 
+var url = require('url');
+var client = require('mongodb').MongoClient;
 
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
-var uri = 'mongodb://heroku_ppxqqb38:67ldeomkuuc9jdlgs89jimikvn@ds019101.mlab.com:19101/heroku_ppxqqb38';
+
+var dbConnUrl = process.env.MONGOLAB_URI ||
+    'mongodb://127.0.0.1:3000/bookList'
+
+console.log('db server: ' + dbConnUrl)
 
 //where to look for static files
 app.use(express.static(__dirname +'/public'));
 //parse json data
 app.use(bodyParser.json());
 
-mongodb.MongoClient.connect(uri, function(err, db){
+client.connect(dbConnUrl, {}, function(err, db){
 
-    if(err) throw err;
+    console.log('error: ' + err)
 
-    var books = db.collection('bk');
-
+    db.listCollections().toArray(function(err, collections) {
+        conosole.log('error: ' + error)
+        conosole.log('collections: ' + collections)
+    })
     //get
-    bk.get('/bookList', function(req, res) {
+    app.get('/bookList', function(req, res) {
         console.log("SEREVR: get request received")
 
         //find all books in db
@@ -38,7 +46,7 @@ mongodb.MongoClient.connect(uri, function(err, db){
 
 
     //post
-    bk.post('/bookList', function(req, res) {
+    app.post('/bookList', function(req, res) {
         //print data recived from command prompt
         console.log(req.body);
         req.body._id= 0;
@@ -49,7 +57,7 @@ mongodb.MongoClient.connect(uri, function(err, db){
     });
 
     //delete
-    bk.delete('/bookList/:id', function(req, res) {
+    app.delete('/bookList/:id', function(req, res) {
         var id = req.params.id;
         console.log(id);
 
@@ -59,7 +67,7 @@ mongodb.MongoClient.connect(uri, function(err, db){
     });
 
     //edit
-    bk.get('/bookList/:id', function(req, res) {
+    app.get('/bookList/:id', function(req, res) {
         var id = req.params.id;
         console.log(id);
 
@@ -70,7 +78,7 @@ mongodb.MongoClient.connect(uri, function(err, db){
     });
 
     //update
-    bk.put('/bookList/:id', function (req, res) {
+    app.put('/bookList/:id', function (req, res) {
       var id = req.params.id;
       console.log("id is: " + id);
       console.log("req body name: " + req.body.name);
@@ -82,6 +90,6 @@ mongodb.MongoClient.connect(uri, function(err, db){
         }
       );
     });
-}
-app.listen(process.env.PORT);
+});
+app.listen(3000);
 console.log("SERVER RUNNING ON PORT 3000");
