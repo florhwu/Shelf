@@ -1,3 +1,4 @@
+var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
@@ -8,6 +9,10 @@ var bodyParser = require('body-parser');
 app.use(express.static(__dirname +'/public'));
 //parse json data
 app.use(bodyParser.json());
+
+app.get('/cool', function(request, response) {
+  response.send(cool());
+});
 
 //get
 app.get('/bookList', function(req, res) {
@@ -21,6 +26,7 @@ app.get('/bookList', function(req, res) {
     });
 
 });
+
 
 //post
 app.post('/bookList', function(req, res) {
