@@ -1,3 +1,8 @@
+process.env.NODE_CONFIG_DIR = './config/env';
+
+var mean = require('meanio');
+var cluster = require('cluster');
+var deferred = require('q').defer();
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
