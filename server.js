@@ -5,7 +5,7 @@ var mongojs = require('mongojs');
 var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
-var http - requrie('http');
+// var http - requrie('http');
 
 var mongoUri = process.env.MONGOLAB_URI || 
   process.env.MONGOHQ_URL || 
