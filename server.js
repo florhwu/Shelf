@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
-var bodyParser = require('body-parser');
 var db = mongojs('bookList',['bookList']);
+var bodyParser = require('body-parser');
 
 //where to look for static files
 app.use(express.static(__dirname +'/public'));
@@ -26,11 +26,11 @@ app.get('/bookList', function(req, res) {
 app.post('/bookList', function(req, res) {
     //print data recived from command prompt
     console.log(req.body);
+    req.body._id= 0;
     db.bookList.insert(req.body, function(err, doc) {
         //send back data to controller
         res.json(doc);
     });
-
 });
 
 //delete
@@ -55,15 +55,17 @@ app.get('/bookList/:id', function(req, res) {
 });
 
 //update
-app.put('/bookList/:id', function(req, res) {
-    var id = req.params.id;
-    console.log(req.body.name);
-
-    db.bookList.findAndModify({query:{_id:mongojs.ObjectId(id)},
-        update:{$set: {name: req.body.name, author: req.body.author, genre:req.body.genre}},
-        new: true}, function(err, doc) {
-            res.json(doc);
-        });
+app.put('/bookList/:id', function (req, res) {
+  var id = req.params.id;
+  console.log("id is: " + id);
+  console.log("req body name: " + req.body.name);
+  db.bookList.findAndModify({
+    query: {_id: mongojs.ObjectId(id)},
+    update: {$set: {name: req.body.name, author: req.body.author, genre: req.body.genre}},
+    new: true}, function (err, doc) {
+      res.json(doc);
+    }
+  );
 });
 
 app.listen(3000);

@@ -29,8 +29,8 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log($scope.book);
         $http.post('/bookList', $scope.book).success(function(response) {
             console.log(response);
+
         });
-        refresh();
     }
 
     $scope.remove = function(id) {
@@ -48,15 +48,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         });
     }
 
-    $scope.update = function(id) {
-        console.log(id);
-        $http.put('/bookList/' + $scope.contact_id).success(function (response) {
+    $scope.update = function() {
+        console.log($scope.book._id);
+        $http.put('/bookList/' + $scope.book._id, $scope.book).success(function(response){
             refresh();
-        });
-    }
-
-    $scope.deselect = function() {
-        $scope.book = "";
-    }
+        })
+    };
     
 }]);
