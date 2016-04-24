@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 
 //     console.log('error: ' + err)
 
-mongoose.connect(process.env.DATABASE_URL||'mongodb://localhost:27017/test', function(err) {
+mongoose.connect(process.env.DATABASE_URL||'mongodb://127.0.0.1:3000/bookList', function(err) {
         console.log('error: ' + err)
 });
     //get
