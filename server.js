@@ -1,7 +1,7 @@
 
 var express = require('express');
 var mongojs = require('mongojs');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 // var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
 // var mongodb = require('mongodb');
@@ -23,7 +23,7 @@ console.log('db server: ' + dbConnUrl)
 app.use(express.static(__dirname +'/public'));
 //parse json data
 app.use(bodyParser.json());
-app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
 
 routes = require('./routes/index');
 app.use('/', routes);
