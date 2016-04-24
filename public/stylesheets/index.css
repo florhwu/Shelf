@@ -1,0 +1,80 @@
+@import url('http://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('http://fonts.googleapis.com/css?family=Average');
+
+body {
+    background-color: #E4F0EC;
+    color: #296379;
+}
+
+h1 {
+    background-color: #296379;
+    color: #E4F0EC;
+    font-family: "Fjalla One";
+    font-size: 50px;
+    text-align: center;
+    padding: 30px 0px;
+    width: 100%;
+}
+
+table {
+    font-family: "Average";
+    background-color: #E4F0EC;
+    color: #296379;
+}
+
+th {
+    font-family: "Average";
+    font-size: 25px;
+}
+
+td {
+    font-family: "Average";
+    font-size: : 18px;
+}
+
+input {
+    height: 40px;
+    background-color: #E4F0EC;
+    color: #296379;
+    border: 1px solid #296379;
+}
+
+.button {
+    background-color: #E4F0EC;
+    border: 1px solid #296379;
+    color: #296379;
+    padding: 10px 30px;
+    width: 120px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #296379;
+    border: 1px solid #296379;
+    color: #E4F0EC;
+}
+
+.button-top {
+    display: inline-block;
+    background-color: #E4F0EC; 
+    color: #296379; 
+    width: 120px;
+    border: 1px solid #296379;
+    padding: 10px 45px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-top:hover {
+    background-color: #296379;
+    border: 1px solid #296379;
+    color: #E4F0EC;
+}
+
+
+

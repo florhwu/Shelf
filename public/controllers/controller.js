@@ -29,7 +29,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log($scope.book);
         $http.post('/bookList', $scope.book).success(function(response) {
             console.log(response);
-
+            refresh();
         });
     }
 
