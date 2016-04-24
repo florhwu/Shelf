@@ -1,0 +1,8 @@
+{
+  "name": "Shelve",
+  "description": "To-Read list app",
+  "repository": "https://github.com/oaklen/Shelve",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
