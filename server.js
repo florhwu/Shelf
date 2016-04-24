@@ -8,14 +8,14 @@ var bodyParser = require('body-parser');
 var http = require('http'); 
 var url = require('url');
 // var client = require('mongodb').MongoClient;
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
 var app = express();
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
 
-var dbConnUrl = process.env.MONGOLAB_URI ||
-    'mongodb://127.0.0.1:3000/bookList'
+// var dbConnUrl = process.env.MONGOLAB_URI ||
+//     'mongodb://127.0.0.1:3000/bookList'
 
 console.log('db server: ' + dbConnUrl)
 
@@ -31,7 +31,7 @@ var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/myproject';
+var url = 'mongodb://localhost:27017/shelves';
 // Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
