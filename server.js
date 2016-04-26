@@ -1,8 +1,5 @@
 var express = require('express');
 var mongojs = require('mongojs');
-var path = require('path');
-var logger = require('morgan');
-var favicon = require('serve-favicon');
 // var db = mongojs('bookList',['bookList']);
 var bodyParser = require('body-parser');
 var http = require('http'); 
