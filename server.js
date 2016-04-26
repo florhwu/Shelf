@@ -83,16 +83,16 @@ mongodb.MongoClient.connect(uri, function(err, db) {
         });
 
         //edit
-        // app.get('/bookList/:id', function(req, res) {
-        //     var id = req.params.id;
-        //     console.log(id);
+        app.get('/bookList/:id', function(req, res) {
+            var id = req.params.id;
+            console.log(id);
 
-        //     bookList.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
-        //         if(err) throw err;
-        //         res.json(doc);
-        //     });
+            bookList.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
+                if(err) throw err;
+                res.json(doc);
+            });
 
-        // });
+        });
 
         //update
         app.put('/bookList/:id', function (req, res) {
