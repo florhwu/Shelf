@@ -49,68 +49,66 @@ mongodb.MongoClient.connect(uri, function(err, db) {
 
     bookList.insert(seedData, function(err, result) {
 
-        if(err) throw err;
-
-        //get
-        bookList.get('/bookList', function(req, res) {
-            console.log("SEREVR: get request received")
-
-            //find all books in db
-            db.bookList.find(function(err,docs) {
-                console.log(docs);
-                //send data badk to controller
-                res.json(docs);
-            });
-
-        });
-
-
-        //post
-        bookList.post('/bookList', function(req, res) {
-            //print data recived from command prompt
-            console.log(req.body);
-            req.body._id= 0;
-            db.bookList.insert(req.body, function(err, doc) {
-                //send back data to controller
-                res.json(doc);
-            });
-        });
-
-        //delete
-        bookList.delete('/bookList/:id', function(req, res) {
-            var id = req.params.id;
-            console.log(id);
-
-            db.bookList.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
-                res.json(doc);
-            });
-        });
-
-        //edit
-        bookList.get('/bookList/:id', function(req, res) {
-            var id = req.params.id;
-            console.log(id);
-
-            db.bookList.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
-                res.json(doc);
-            });
-
-        });
-
-        //update
-        bookList.put('/bookList/:id', function (req, res) {
-          var id = req.params.id;
-          console.log("id is: " + id);
-          console.log("req body name: " + req.body.name);
-          db.bookList.findAndModify({
-            query: {_id: mongojs.ObjectId(id)},
-            update: {$set: {name: req.body.name, author: req.body.author, genre: req.body.genre}},
-            new: true}, function (err, doc) {
-              res.json(doc);
-            }
-          );
-        });    
-
+        if(err) throw err;  
 
     });
-});
+
+    //get
+    app.get('/bookList', function(req, res) {
+        console.log("SEREVR: get request received")
+
+        //find all books in db
+        db.bookList.find(function(err,docs) {
+            console.log(docs);
+            //send data badk to controller
+            res.json(docs);
+        });
+
+    });
+
+
+    //post
+    app.post('/bookList', function(req, res) {
+        //print data recived from command prompt
+        console.log(req.body);
+        req.body._id= 0;
+        db.bookList.insert(req.body, function(err, doc) {
+            //send back data to controller
+            res.json(doc);
+        });
+    });
+
+    //delete
+    app.delete('/bookList/:id', function(req, res) {
+        var id = req.params.id;
+        console.log(id);
+
+        db.bookList.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+            res.json(doc);
+        });
+    });
+
+    //edit
+    app.get('/bookList/:id', function(req, res) {
+        var id = req.params.id;
+        console.log(id);
+
+        db.bookList.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
+            res.json(doc);
+        });
+
+    });
+
+    //update
+    app.put('/bookList/:id', function (req, res) {
+      var id = req.params.id;
+      console.log("id is: " + id);
+      console.log("req body name: " + req.body.name);
+      db.bookList.findAndModify({
+        query: {_id: mongojs.ObjectId(id)},
+        update: {$set: {name: req.body.name, author: req.body.author, genre: req.body.genre}},
+        new: true}, function (err, doc) {
+          res.json(doc);
+        }
+      );
+    });  
