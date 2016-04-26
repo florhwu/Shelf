@@ -49,7 +49,8 @@ mongodb.MongoClient.connect(uri, function(err, db) {
             console.log("SEREVR: get request received")
 
             //find all books in db
-            bookList.find(function(err,docs) {
+            bookList.find().toArray(function(err, docs) {
+                if(err) throw err;
                 console.log(docs);
                 //send data badk to controller
                 res.json(docs);
@@ -64,6 +65,7 @@ mongodb.MongoClient.connect(uri, function(err, db) {
             console.log(req.body);
             req.body._id= 0;
             bookList.insert(req.body, function(err, doc) {
+                if(err) throw err;
                 //send back data to controller
                 res.json(doc);
             });
@@ -75,33 +77,36 @@ mongodb.MongoClient.connect(uri, function(err, db) {
             console.log(id);
 
             bookList.remove({_id: mongojs.ObjectId(id)}, function(err, doc) {
+                if(err) throw err;
                 res.json(doc);
             });
         });
 
         //edit
-        app.get('/bookList/:id', function(req, res) {
-            var id = req.params.id;
-            console.log(id);
+        // app.get('/bookList/:id', function(req, res) {
+        //     var id = req.params.id;
+        //     console.log(id);
 
-            bookList.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
-                res.json(doc);
-            });
+        //     bookList.findOne({_id: mongojs.ObjectId(id)}, function(err, doc) {
+        //         if(err) throw err;
+        //         res.json(doc);
+        //     });
 
-        });
+        // });
 
         //update
         app.put('/bookList/:id', function (req, res) {
-          var id = req.params.id;
-          console.log("id is: " + id);
-          console.log("req body name: " + req.body.name);
-          bookList.findAndModify({
-            query: {_id: mongojs.ObjectId(id)},
-            update: {$set: {name: req.body.name, author: req.body.author, genre: req.body.genre}},
-            new: true}, function (err, doc) {
-              res.json(doc);
-            })
-        });
+            var id = req.params.id;
+            console.log("id is: " + id);
+            console.log("req body name: " + req.body.name);
+            bookList.findAndModify({
+                query: {_id: mongojs.ObjectId(id)},
+                update: {$set: {name: req.body.name, author: req.body.author, genre: req.body.genre}},
+                new: true}, function (err, doc) {
+                    if(err) throw err;
+                    res.json(doc);
+                })
+            });
     });
 });
 
