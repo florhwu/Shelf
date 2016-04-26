@@ -27,11 +27,11 @@ app.use(bodyParser.json());
 // client.connect(dbConnUrl, {}, function(err, db){
 
 //     console.log('error: ' + err)
-var MongoClient = require('mongodb').MongoClient
+var MongoClient = require('mongodb').MongoClsient
   , assert = require('assert');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/shelves';
+var url = 'mongodb://127.0.0.1:64501/shelves';
 // Use connect method to connect to the Server
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
