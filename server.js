@@ -9,19 +9,6 @@ var mongodb = require('mongodb');
 
 var app = express();
 
-var seedData = [
-  {
-    name: 'Atlas Shrugged',
-    author: 'Ayn Rand',
-    genre: 'Fic'
-  },
-  {
-    name: 'Painter of Battles',
-    author: 'Olivia Newton-John',
-    genre: 'Art'
-  }
-];
-
 //where to look for static files
 app.use(express.static(__dirname +'/public'));
 app.use(bodyParser.json());
@@ -45,14 +32,6 @@ mongodb.MongoClient.connect(uri, function(err, db) {
 
     var bookList = db.collection('bookList');
 
-    // Note that the insert method can take either an array or a dict.
-
-    bookList.insert(seedData, function(err, result) {
-
-        if(err) throw err;  
-
-    });
-
     //get
     app.get('/bookList', function(req, res) {
         console.log("SEREVR: get request received")
@@ -65,7 +44,6 @@ mongodb.MongoClient.connect(uri, function(err, db) {
         });
 
     });
-
 
     //post
     app.post('/bookList', function(req, res) {
