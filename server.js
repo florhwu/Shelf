@@ -63,7 +63,7 @@ mongodb.MongoClient.connect(uri, function(err, db) {
         app.post('/bookList', function(req, res) {
             //print data recived from command prompt
             console.log(req.body);
-            req.body._id= 0;
+            // req.body._id= 0;
             bookList.insert(req.body, function(err, doc) {
                 if(err) throw err;
                 //send back data to controller
