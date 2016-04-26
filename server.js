@@ -11,8 +11,6 @@ var app = express();
 //where to look for static files
 app.use(express.static(__dirname +'/public'));
 app.use(bodyParser.json());
-app.use(favicon(path.join(__dirname, 'public', 'img','favicon.ico')));
-
 
 // Connection URL
 var uri = 'mongodb://heroku_9fpb00cc:e3fghoh83m0mko4sf8acj318aa@ds061318.mlab.com:61318/heroku_9fpb00cc';
