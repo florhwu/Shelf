@@ -112,3 +112,5 @@ mongodb.MongoClient.connect(uri, function(err, db) {
         })
     });
 });
+
+app.listen(process.env.PORT || 3000);
