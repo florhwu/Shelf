@@ -109,6 +109,7 @@ mongodb.MongoClient.connect(uri, function(err, db) {
         update: {$set: {name: req.body.name, author: req.body.author, genre: req.body.genre}},
         new: true}, function (err, doc) {
           res.json(doc);
-        }
-      );
-    });  
+        })
+    });
+}    
+  
